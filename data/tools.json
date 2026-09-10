@@ -1,0 +1,98 @@
+{
+  "$schema": "./tools.schema.json",
+  "version": 1,
+  "title": "Verktyg",
+  "tools": [
+    {
+      "id": "codevault",
+      "name": "CodeVault",
+      "description": "Håller riktiga lösenord och servrar borta från AI-chatten. Du kopierar ut sanerad kod till AI:n och riktig kod till editorn.",
+      "repo": "timpan8/CodeVault",
+      "url": "https://timpan8.github.io/CodeVault/",
+      "icon": "🔐",
+      "tags": [
+        "ai",
+        "säkerhet",
+        "kod"
+      ]
+    },
+    {
+      "id": "csv-tool",
+      "name": "CSV-verkstan",
+      "description": "Läs in, städa, matcha och exportera CSV- och Excel-data. Allt sker i webbläsaren, utan ett enda nätverksanrop.",
+      "repo": "timpan8/CSV-Tool",
+      "url": "https://timpan8.github.io/CSV-Tool/",
+      "icon": "📊",
+      "tags": [
+        "data",
+        "csv",
+        "excel"
+      ]
+    },
+    {
+      "id": "base64converter",
+      "name": "Base64Converter",
+      "description": "Konverterar en textlista till Base64, rad för rad. Klistra in, konvertera, kopiera.",
+      "repo": "timpan8/Base64Converter",
+      "url": "https://timpan8.github.io/Base64Converter/",
+      "icon": "🔡",
+      "tags": [
+        "kodning",
+        "text"
+      ]
+    },
+    {
+      "id": "plump",
+      "name": "Plump",
+      "description": "Digital resultattavla för kortspelet Plump. Håller reda på bud, stick och poäng genom hela trappan, direkt i mobilen.",
+      "repo": "timpan8/Plump",
+      "url": "https://timpan8.github.io/Plump/",
+      "icon": "🃏",
+      "tags": [
+        "spel",
+        "poäng"
+      ]
+    },
+    {
+      "id": "comparecode",
+      "name": "CompareCode",
+      "description": "Jämför två versioner av kod och se exakt vad som ändrats, utan att koden lämnar webbläsaren. Under arbete.",
+      "repo": "timpan8/CompareCode",
+      "icon": "🔍",
+      "tags": [
+        "kod",
+        "diff"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "coding-tool",
+      "name": "Coding-Tool",
+      "description": "AI Code Vault — föregångaren till CodeVault. Kodbasen är flyttad dit och lever vidare där.",
+      "repo": "timpan8/Coding-Tool",
+      "icon": "🧪",
+      "tags": [
+        "ai",
+        "kod",
+        "arkiv"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "xml-tool",
+      "name": "Xml-tool",
+      "description": "Platshållare för ett XML-verktyg. Repot är tomt än så länge.",
+      "repo": "timpan8/Xml-tool",
+      "icon": "📄",
+      "hidden": true
+    },
+    {
+      "id": "papercutcards",
+      "name": "PapercutCards",
+      "description": "Platshållare. Repot är tomt än så länge.",
+      "repo": "timpan8/PapercutCards",
+      "icon": "✂️",
+      "hidden": true
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+/* Designtokens och delad bas för Webstart.
+   Mörkt tema är standard; [data-theme="light"] växlar till ljust. */
+
+:root {
+  color-scheme: dark;
+
+  --bg:         #0a0c10;
+  --bg-soft:    #10131a;
+  --surface:    #151920;
+  --surface-2:  #1c212a;
+  --border:     #242a35;
+  --border-lit: #39424f;
+
+  --text:       #e8ebf0;
+  --text-dim:   #98a2b3;
+  --text-faint: #6a7382;
+
+  --accent:     #7aa2f7;
+  --accent-dim: #4d6fbd;
+  --accent-bg:  rgba(122, 162, 247, 0.10);
+
+  --ok:         #9ece6a;
+  --warn:       #e0af68;
+  --danger:     #f7768e;
+
+  --radius:     14px;
+  --radius-sm:  9px;
+  --shadow:     0 1px 2px rgba(0, 0, 0, .40), 0 10px 30px rgba(0, 0, 0, .30);
+  --shadow-lit: 0 1px 2px rgba(0, 0, 0, .40), 0 16px 40px rgba(0, 0, 0, .45);
+
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --maxw: 1180px;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg:         #f4f6f8;
+  --bg-soft:    #eaedf1;
+  --surface:    #ffffff;
+  --surface-2:  #f2f4f7;
+  --border:     #e0e4ea;
+  --border-lit: #c2cad6;
+
+  --text:       #161a20;
+  --text-dim:   #58616f;
+  --text-faint: #838c99;
+
+  --accent:     #3563c9;
+  --accent-dim: #7b98db;
+  --accent-bg:  rgba(53, 99, 201, 0.08);
+
+  --ok:         #3f7d24;
+  --warn:       #9a6a14;
+  --danger:     #c53b53;
+
+  --shadow:     0 1px 2px rgba(16, 24, 40, .06), 0 8px 24px rgba(16, 24, 40, .07);
+  --shadow-lit: 0 1px 2px rgba(16, 24, 40, .08), 0 14px 34px rgba(16, 24, 40, .12);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --- Formulärelement --- */
+
+input, textarea, select, button {
+  font: inherit;
+  color: inherit;
+}
+
+.field {
+  width: 100%;
+  padding: 8px 11px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  transition: border-color .15s, background .15s;
+}
+.field::placeholder { color: var(--text-faint); }
+.field:hover { border-color: var(--border-lit); }
+.field:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background .15s, border-color .15s, transform .08s;
+}
+.btn:hover:not(:disabled) { background: var(--surface); border-color: var(--border-lit); }
+.btn:active:not(:disabled) { transform: translateY(1px); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0a0c10;
+  font-weight: 600;
+}
+.btn-primary:hover:not(:disabled) { background: #8fb3f9; border-color: #8fb3f9; }
+[data-theme="light"] .btn-primary { color: #fff; }
+[data-theme="light"] .btn-primary:hover:not(:disabled) { background: #2b55b3; border-color: #2b55b3; }
+
+.btn-icon {
+  padding: 7px;
+  line-height: 0;
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-dim);
+}
+.btn-icon:hover:not(:disabled) { background: var(--surface-2); color: var(--text); border-color: var(--border); }
+
+/* --- Småkomponenter --- */
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--accent-bg);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 11.5px;
+  font-weight: 500;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 7px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-faint);
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.pill-ok   { color: var(--ok);   border-color: color-mix(in srgb, var(--ok) 40%, transparent); }
+.pill-warn { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, transparent); }
+
+.notice {
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-dim);
+  font-size: 13.5px;
+}
+.notice-warn   { border-color: color-mix(in srgb, var(--warn) 45%, transparent);   background: color-mix(in srgb, var(--warn) 8%, var(--surface)); }
+.notice-danger { border-color: color-mix(in srgb, var(--danger) 45%, transparent); background: color-mix(in srgb, var(--danger) 8%, var(--surface)); }
+.notice-ok     { border-color: color-mix(in srgb, var(--ok) 45%, transparent);     background: color-mix(in srgb, var(--ok) 8%, var(--surface)); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Under själva temabytet ska ingenting tona. Annars hinner färgerna glida i
+   otakt - texten byts direkt medan kortbakgrunden fortfarande tonar om, och
+   ett ögonblick står mörk text på mörkt kort. */
+.theme-switching, .theme-switching * { transition: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
