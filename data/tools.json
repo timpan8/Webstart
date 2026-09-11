@@ -56,12 +56,14 @@
     {
       "id": "comparecode",
       "name": "CompareCode",
-      "description": "Jämför två versioner av kod och se exakt vad som ändrats, utan att koden lämnar webbläsaren. Under arbete.",
+      "description": "Jämför två versioner av kod och se exakt vad som ändrats — sida vid sida eller inline. Koden lämnar aldrig webbläsaren.",
       "repo": "timpan8/CompareCode",
+      "url": "https://timpan8.github.io/CompareCode/",
       "icon": "🔍",
       "tags": [
         "kod",
-        "diff"
+        "diff",
+        "offline"
       ]
     },
     {
