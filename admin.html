@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="sv" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hantera verktyg</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/admin.css">
+<script>
+  try {
+    var t = localStorage.getItem('webstart:theme');
+    if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+  } catch (e) {}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="back" href="./">
+      <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
+        <path fill="currentColor" d="M10.3 1.3a1 1 0 0 1 0 1.4L5 8l5.3 5.3a1 1 0 0 1-1.4 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.4 0"/>
+      </svg>
+      Till startsidan
+    </a>
+    <span class="dirty-dot" title="Osparade ändringar"></span>
+    <span class="topbar-spacer"></span>
+    <span id="save-state" class="save-state"></span>
+    <button id="btn-reload" class="btn" type="button">Läs om</button>
+    <button id="btn-save" class="btn btn-primary" type="button" disabled>Spara till GitHub</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="page-head">
+    <h1>Hantera verktyg</h1>
+    <p>Bocka i vilka repon som ska listas, skriv beskrivningar och dra korten i den ordning du vill ha dem.</p>
+  </div>
+
+  <div id="messages" role="status" aria-live="polite"></div>
+
+  <details class="collapse panel" id="token-panel" style="margin-bottom:18px">
+    <summary>
+      Token för att spara direkt till GitHub
+      <span id="token-badge" class="pill">ingen token</span>
+    </summary>
+    <div class="panel-body">
+      <div class="token-grid">
+        <div class="form-row">
+          <label for="token-input">Fin-granulär personal access token</label>
+          <input id="token-input" class="field" type="password" autocomplete="off"
+                 spellcheck="false" placeholder="github_pat_…">
+        </div>
+        <div class="form-row" style="flex:0 0 auto;min-width:0">
+          <label for="token-storage">Kom ihåg</label>
+          <select id="token-storage" class="field">
+            <option value="session">Bara den här fliken</option>
+            <option value="local">På den här datorn</option>
+          </select>
+        </div>
+        <button id="btn-token-save" class="btn btn-primary" type="button">Använd</button>
+        <button id="btn-token-forget" class="btn" type="button">Glöm</button>
+      </div>
+
+      <div class="token-scope">
+        Skapa en <strong>fine-grained token</strong> under
+        <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">Settings → Developer settings</a>.
+        Ge den <strong>bara</strong> det här repot och <strong>bara</strong>
+        <code>Contents: Read and write</code>. Sätt ett utgångsdatum.<br>
+        Läcker en sådan token kan den ändra den här sidan och ingenting annat.
+        Alla <code>*.github.io</code>-sidor delar samma lagringsutrymme i webbläsaren,
+        så välj <em>Bara den här fliken</em> om du sitter vid en dator du inte äger.
+      </div>
+    </div>
+  </details>
+
+  <div class="columns">
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Dina repon</h2>
+        <span id="repo-count" class="count"></span>
+        <span class="spacer"></span>
+        <span id="rate-info" class="count"></span>
+      </div>
+      <div class="panel-body" style="padding-bottom:0">
+        <input id="repo-search" class="field" type="search" placeholder="Filtrera repon…"
+               autocomplete="off" spellcheck="false" aria-label="Filtrera repon">
+      </div>
+      <div class="panel-hint">Klicka för att lägga till eller ta bort ur listan.</div>
+      <div id="repo-list" class="repo-list"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Din lista</h2>
+        <span id="tool-count" class="count"></span>
+        <span class="spacer"></span>
+        <button id="btn-add-link" class="btn" type="button">Lägg till länk</button>
+        <button id="btn-copy" class="btn" type="button">Kopiera JSON</button>
+        <button id="btn-download" class="btn" type="button">Ladda ner</button>
+      </div>
+      <div class="panel-hint">
+        Dra i handtaget för att flytta. Med handtaget i fokus flyttar <kbd>↑</kbd> och <kbd>↓</kbd> posten.
+      </div>
+      <ul id="tool-list" class="tool-list"></ul>
+    </section>
+
+  </div>
+</main>
+
+<dialog id="conflict-dialog">
+  <div class="dialog-body">
+    <h2>Filen har ändrats på GitHub</h2>
+    <p>Någon annan — du på en annan enhet, eller en AI — har sparat <code>data/tools.json</code>
+       sedan du läste in den här sidan.</p>
+    <p>Sparar du nu skrivs deras ändring över.</p>
+  </div>
+  <div class="dialog-actions">
+    <button id="conflict-reload" class="btn" type="button" value="reload">Läs om deras version</button>
+    <button id="conflict-force" class="btn btn-primary" type="button" value="force">Skriv över ändå</button>
+  </div>
+</dialog>
+
+<div id="toasts" class="toast-wrap" aria-live="polite"></div>
+
+<script type="module" src="assets/admin.js"></script>
+</body>
+</html>

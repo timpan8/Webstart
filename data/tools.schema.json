@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Webstart verktygslista",
+  "description": "Kurerad lista över verktygen som visas på startsidan. Ordningen i tools-arrayen är visningsordningen.",
+  "type": "object",
+  "required": ["version", "tools"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1, "description": "Formatversion. Höjs bara vid en brytande ändring." },
+    "title": { "type": "string", "description": "Rubrik på startsidan och i webbläsarfliken." },
+    "tools": { "type": "array", "items": { "$ref": "#/definitions/tool" } }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "tool": {
+      "type": "object",
+      "required": ["id", "name"],
+      "anyOf": [
+        { "required": ["url"] },
+        { "required": ["repo"] }
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$",
+          "description": "Stabil nyckel. Byts ALDRIG - allt annat får ändras."
+        },
+        "name": { "type": "string", "minLength": 1, "description": "Rubriken på kortet." },
+        "description": {
+          "type": "string",
+          "description": "Vad verktyget gör, 1-2 meningar. Ungefär 120 tecken visas innan texten klipps."
+        },
+        "repo": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+/[A-Za-z0-9._-]+$",
+          "description": "ägare/namn. Ger källkodslänken och fallback-länken."
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https?://",
+          "description": "Länken kortet öppnar. Saknas den används repots GitHub-sida."
+        },
+        "icon": { "type": "string", "description": "En emoji. Tom = första bokstaven i namnet." },
+        "tags": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "category": { "type": "string", "description": "Grupprubrik. Har någon post en kategori grupperas sidan i sektioner." },
+        "hidden": { "type": "boolean", "description": "true döljer posten på startsidan utan att radera den." },
+        "lock": {
+          "type": "array",
+          "description": "Fält som en AI inte får skriva om.",
+          "items": { "enum": ["name", "description", "icon", "tags", "category", "url"] }
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}
