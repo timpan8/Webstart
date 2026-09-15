@@ -70,15 +70,15 @@
     {
       "id": "coding-tool",
       "name": "Coding-Tool",
-      "description": "AI Code Vault — föregångaren till CodeVault. Kodbasen är flyttad dit och lever vidare där.",
+      "description": "AI Code Vault: kod lagras som mallar med platshållare — en vy för dina riktiga värden, en för ofarliga exempel till AI:n.",
       "repo": "timpan8/Coding-Tool",
+      "url": "https://timpan8.github.io/Coding-Tool/",
       "icon": "🧪",
       "tags": [
         "ai",
         "kod",
-        "arkiv"
-      ],
-      "hidden": true
+        "mallar"
+      ]
     },
     {
       "id": "xml-tool",
