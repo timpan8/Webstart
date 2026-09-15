@@ -42,18 +42,6 @@
       ]
     },
     {
-      "id": "plump",
-      "name": "Plump",
-      "description": "Digital resultattavla för kortspelet Plump. Håller reda på bud, stick och poäng genom hela trappan, direkt i mobilen.",
-      "repo": "timpan8/Plump",
-      "url": "https://timpan8.github.io/Plump/",
-      "icon": "🃏",
-      "tags": [
-        "spel",
-        "poäng"
-      ]
-    },
-    {
       "id": "comparecode",
       "name": "CompareCode",
       "description": "Jämför två versioner av kod och se exakt vad som ändrats — sida vid sida eller inline. Koden lämnar aldrig webbläsaren.",
@@ -64,6 +52,19 @@
         "kod",
         "diff",
         "offline"
+      ]
+    },
+    {
+      "id": "listtool",
+      "name": "List Tool",
+      "description": "Importera listor, städa och omvandla dem, jämför dem mot varandra och exportera. Allt sker i webbläsaren.",
+      "repo": "timpan8/ListTool",
+      "url": "https://timpan8.github.io/ListTool/",
+      "icon": "📋",
+      "tags": [
+        "listor",
+        "data",
+        "jämför"
       ]
     },
     {
