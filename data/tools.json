@@ -81,6 +81,19 @@
       ]
     },
     {
+      "id": "prisbevakning",
+      "name": "Prisbevakning",
+      "description": "Bästa pris, butikspaket, prishistorik och begagnat för varorna på inköpslistan. Låst med kod.",
+      "repo": "timpan8/Prisbevakning",
+      "url": "https://timpan8.github.io/Prisbevakning/",
+      "icon": "🏷️",
+      "tags": [
+        "priser",
+        "inköp",
+        "todoist"
+      ]
+    },
+    {
       "id": "xml-tool",
       "name": "Xml-tool",
       "description": "Platshållare för ett XML-verktyg. Repot är tomt än så länge.",
